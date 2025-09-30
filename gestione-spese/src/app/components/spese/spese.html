@@ -1,0 +1,33 @@
+<h2>Gestione Spese</h2>
+
+<form (ngSubmit)="aggiungiSpesa()" #spesaForm="ngForm">
+  <input type="text" placeholder="Descrizione" [(ngModel)]="nuovaSpesa.descrizione" name="descrizione" required>
+  <input type="number" placeholder="Importo" [(ngModel)]="nuovaSpesa.importo" name="importo" required>
+  <input type="text" placeholder="Categoria" [(ngModel)]="nuovaSpesa.categoria" name="categoria" required>
+  <input type="date" [(ngModel)]="nuovaSpesa.data" name="data" required>
+  <button type="submit" [disabled]="!spesaForm.form.valid">Aggiungi Spesa</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descrizione</th>
+      <th>Importo</th>
+      <th>Categoria</th>
+      <th>Data</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of spese; let i = index">
+      <td>{{ s.descrizione }}</td>
+      <td>{{ s.importo | currency:'EUR' }}</td>
+      <td>{{ s.categoria }}</td>
+      <td>{{ s.data }}</td>
+      <td><button (click)="eliminaSpesa(i)">Elimina</button></td>
+    </tr>
+    <tr *ngIf="spese.length === 0">
+      <td colspan="5" class="empty">Nessuna spesa inserita</td>
+    </tr>
+  </tbody>
+</table>
