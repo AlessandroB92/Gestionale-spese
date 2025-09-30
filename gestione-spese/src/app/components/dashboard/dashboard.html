@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<h2>Dashboard</h2>
+<p>Riepilogo delle spese per categoria</p>
+
+<div style="max-width: 500px;">
+  <canvas baseChart
+          [data]="pieChartData"
+          [options]="pieChartOptions"
+          chartType="pie">
+  </canvas>
+</div>
